@@ -18,16 +18,22 @@ public class VaiDarNamoroTerminal {
         ListaPerguntas perguntas = new ListaPerguntas();
         Usuario voce = new Usuario();
         
-        String nomeUsuario = input.nextLine();
-        while(true){
-            System.out.println("Insira seu nome");
-            voce.iniciarUsuario(nomeUsuario);
+        String nomeUsuario = input.nextLine();           
+        String proximaPergunta = perguntas.getNextQuestion();
 
-            if(voce.getNome() != null){
+        System.out.println("Insira seu nome");
+        voce.iniciarUsuario(nomeUsuario);
+        
+        while(proximaPergunta != null){
+            
+
+            if(voce.getNome() == null){
                 System.out.println("Insira seu nome por favor");
                 continue;
             }
-            String proximaPergunta = perguntas.getNextQuestion();
+            
+            System.out.println(proximaPergunta);
+            proximaPergunta = perguntas.getNextQuestion();
             
         }
         
