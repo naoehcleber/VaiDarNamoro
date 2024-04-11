@@ -1,5 +1,16 @@
-package com.mycompany.vaidarnamoroterminal;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
+
+ package com.mycompany.vaidarnamoroterminal;
+ 
+ 
+ /**
+  *
+  * @author João Victor e Beatriz Romero
+  */
 public class Pessoa {
     private String Nome;
     private String Idade;
@@ -8,7 +19,7 @@ public class Pessoa {
     public Pessoa() {
 
     }
-    
+
     public Pessoa(String nome, String idade, String genero) {
         Nome = nome;
         Idade = idade;
