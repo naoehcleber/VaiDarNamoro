@@ -6,24 +6,40 @@ package com.mycompany.vaidarnamoroterminal;
 
 /**
  *
- * @author João Victor
+ * @author João Victor e Beatriz Romero
  */
-public class Usuario {
-    private String Nome;
+public class Usuario extends Pessoa{
+    
     private int alinhamentoA;
     private int alinhamentoE;
     private int alinhamentoC;
     private int alinhamentoN;
     private int alinhamentoO;
 
-
-    public String getNome() {
-        return Nome;
+    
+    public Usuario() {
+        
     }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public Usuario(int alinhamentoA, int alinhamentoE, int alinhamentoC, int alinhamentoN, int alinhamentoO) {
+        this.alinhamentoA = alinhamentoA;
+        this.alinhamentoE = alinhamentoE;
+        this.alinhamentoC = alinhamentoC;
+        this.alinhamentoN = alinhamentoN;
+        this.alinhamentoO = alinhamentoO;
     }
+
+    public Usuario(String nome, String idade, String genero, int alinhamentoA, int alinhamentoE, int alinhamentoC,
+            int alinhamentoN, int alinhamentoO) {
+        super(nome, idade, genero);
+        this.alinhamentoA = alinhamentoA;
+        this.alinhamentoE = alinhamentoE;
+        this.alinhamentoC = alinhamentoC;
+        this.alinhamentoN = alinhamentoN;
+        this.alinhamentoO = alinhamentoO;
+    }
+
+    
 
     public int getAlinhamentoA() {
         return alinhamentoA;
@@ -65,8 +81,8 @@ public class Usuario {
         this.alinhamentoO = alinhamentoO;
     }
     
-    public void iniciarUsuario(String nome){
-        this.Nome = nome;
+    public void iniciarUsuario(){
+        
         this.alinhamentoA = 0;
         this.alinhamentoE = 0;
         this.alinhamentoN = 0;

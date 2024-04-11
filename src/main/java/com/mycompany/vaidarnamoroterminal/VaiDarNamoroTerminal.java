@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author João Victor
+ * @author João Victor e Beatriz Romero
  */
 public class VaiDarNamoroTerminal {
         
@@ -16,13 +16,14 @@ public class VaiDarNamoroTerminal {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         ListaPerguntas perguntas = new ListaPerguntas();
+        Pessoa pessoa = new Pessoa();
         Usuario voce = new Usuario();
-        
+       
         String nomeUsuario = input.nextLine();           
         String proximaPergunta = perguntas.getNextQuestion();
 
         System.out.println("Insira seu nome");
-        voce.iniciarUsuario(nomeUsuario);
+        voce.iniciarUsuario();
         
         while(proximaPergunta != null){
             
@@ -37,6 +38,6 @@ public class VaiDarNamoroTerminal {
             
         }
         
-        
+        input.close();  
     }
 }

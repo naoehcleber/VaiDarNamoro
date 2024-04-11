@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  *
- * @author João Victor
+ * @author João Victor e Beatriz Romero
  */
 public class ListaPerguntas {
    
