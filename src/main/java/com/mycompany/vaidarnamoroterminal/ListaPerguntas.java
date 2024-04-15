@@ -16,13 +16,13 @@ public class ListaPerguntas {
     
     public ListaPerguntas(){
         perguntas = new ArrayList<>();
-        perguntas.add("Pergunta 1");
-        perguntas.add("Pergunta 2");
-        perguntas.add("Pergunta 3");
-        perguntas.add("Pergunta 4");
-        perguntas.add("Pergunta 5");
-        perguntas.add("Pergunta 6");
-        Collections.shuffle(perguntas);
+        perguntas.add("Pergunta de A");
+        perguntas.add("Pergunta de E");
+        perguntas.add("Pergunta de C");
+        perguntas.add("Pergunta de N");
+        perguntas.add("Pergunta de O");
+        perguntas.add("Pergunta de todas");
+        
         perguntaAtualIndex = 0;
     }
     
@@ -33,6 +33,9 @@ public class ListaPerguntas {
         String proximaPergunta = perguntas.get(perguntaAtualIndex);
         perguntaAtualIndex += 1;
         return proximaPergunta;
+    }
+    public int returnIndex(){
+        return perguntaAtualIndex;
     }
     
     

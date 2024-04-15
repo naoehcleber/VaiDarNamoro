@@ -9,11 +9,15 @@ package com.mycompany.vaidarnamoroterminal;
  * @author João Victor e Beatriz Romero
  */
 public class Usuario extends Pessoa{
-    
+    //agreableness / concordabilidade
     private int alinhamentoA;
+    //extroverssao
     private int alinhamentoE;
+    //conciencidade
     private int alinhamentoC;
+    //neutoricismo
     private int alinhamentoN;
+    //abertura
     private int alinhamentoO;
 
     
