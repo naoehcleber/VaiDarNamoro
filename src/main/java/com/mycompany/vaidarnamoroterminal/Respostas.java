@@ -12,9 +12,10 @@ import java.util.HashMap;
  * @author João Victor
  */
 public class Respostas {
-    
-    public void MapRespostas(){
-        Map<Integer, String> respostasMap = new HashMap<>();
+    Map<Integer, String> respostasMap = new HashMap<>();
+
+
+    private void MapRespostas(){
         //mapa vai receber como key o index do arrayList Perguntas
         //o value vai ser uma string que seja a resposta
         respostasMap.put(1, "A");
@@ -25,6 +26,16 @@ public class Respostas {
         
         
     }
+    
+    public Respostas(){
+        MapRespostas();
+    }
+    
+    public String getResposta(int IndexAtual){
+        return respostasMap.get(IndexAtual);
+    }
+
+    
     
     
     

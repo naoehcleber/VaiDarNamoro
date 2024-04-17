@@ -13,7 +13,7 @@ import java.util.HashMap;
  * @author João Victor e Beatriz Romero
  */
 public class VaiDarNamoroTerminal {
-        
+    
         
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -31,26 +31,33 @@ public class VaiDarNamoroTerminal {
         
         while(proximaPergunta != null){
             
-
-            if(voce.getNome() == null){
-                System.out.println("Insira seu nome por favor");
-                continue;
+            while(voce.getNome() == null){
+                if(voce.getNome() == null){
+                    System.out.println("Insira seu nome por favor");
+                    
+                }
+                System.out.println("Seja bem vindo " + voce.getNome());
             }
-            System.out.println("Seja bem vindo " + voce.getNome());
+            
+            
             //imprime a pergunta
             System.out.println(proximaPergunta);
             int IndexAtual = perguntas.returnIndex();
+            System.out.println("Pergunta  " + IndexAtual + ":");
             //passa para a proxima pergunta
-            proximaPergunta = perguntas.getNextQuestion();
+            
             
             //pega a resposta com um scanner
             String resposta = input.nextLine();
-            // a função get não esta funcionando e não estou sabendo retornar ela
-            String respostaCorreta = respostas.get(IndexAtual);
             
-            if(resposta.equals(respostas.get(perguntas.returnIndex()))){
+            String respostaCorreta = respostas.getResposta(IndexAtual);
+            
+            
+            if(resposta.equals(respostaCorreta)){
                 System.out.println("Resposta Certa!");
             }
+            
+            proximaPergunta = perguntas.getNextQuestion();
         }
         
         input.close();  
