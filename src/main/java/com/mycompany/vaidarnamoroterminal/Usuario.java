@@ -19,12 +19,11 @@ public class Usuario extends Pessoa{
     private int alinhamentoN;
     //abertura
     private int alinhamentoO;
-
     
-    public Usuario() {
+    public Usuario(){
         
     }
-
+    
     public Usuario(int alinhamentoA, int alinhamentoE, int alinhamentoC, int alinhamentoN, int alinhamentoO) {
         this.alinhamentoA = alinhamentoA;
         this.alinhamentoE = alinhamentoE;
@@ -94,6 +93,29 @@ public class Usuario extends Pessoa{
         this.alinhamentoO = 0;
 
         
+    }
+    
+    public void increaseAlinhamento(int IndexAtual){
+        //primeira pergunta eh pra A
+        switch (IndexAtual) {
+            case 1:
+                this.alinhamentoA += 1;
+                break;
+            case 2:
+                this.alinhamentoE += 1;
+                break;
+            case 3:
+                this.alinhamentoN += 1;
+                break;
+            case 4:
+                this.alinhamentoC += 1;
+                break;
+            case 5:
+                this.alinhamentoO += 1;
+                break;
+            default:
+                break;
+        }
     }
     
 }

@@ -49,14 +49,16 @@ public class VaiDarNamoroTerminal {
             
             //pega a resposta com um scanner
             String resposta = input.nextLine();
-            
+            //chama o map pra salvar a resposta da pergunta atual
             String respostaCorreta = respostas.getResposta(IndexAtual);
             
-            
+            //confere se a resposta dada é igual a resposta certa
             if(resposta.equals(respostaCorreta)){
                 System.out.println("Resposta Certa!");
+                //aumenta o alinhamento respectivo
+                voce.increaseAlinhamento(IndexAtual);
             }
-            
+            System.out.println("Estatisticas atuais : \n" + "A = "+ voce.getAlinhamentoA() + " " + "E = " + voce.getAlinhamentoE()+ " "  + "C = " + voce.getAlinhamentoC() + " " + "N = " + voce.getAlinhamentoN()+ " "  + "O = " + voce.getAlinhamentoO()+ " " );
             proximaPergunta = perguntas.getNextQuestion();
         }
         

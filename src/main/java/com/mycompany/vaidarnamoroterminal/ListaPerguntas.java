@@ -16,12 +16,12 @@ public class ListaPerguntas {
     
     public ListaPerguntas(){
         perguntas = new ArrayList<>();
-        perguntas.add("Pergunta de A");
-        perguntas.add("Pergunta de E");
-        perguntas.add("Pergunta de C");
-        perguntas.add("Pergunta de N");
-        perguntas.add("Pergunta de O");
-        perguntas.add("Pergunta de todas");
+        perguntas.add("Pergunta de A \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
+        perguntas.add("Pergunta de E \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
+        perguntas.add("Pergunta de C \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
+        perguntas.add("Pergunta de N \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
+        perguntas.add("Pergunta de O \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
+        perguntas.add("Pergunta de todas \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
         
         perguntaAtualIndex = 0;
     }
