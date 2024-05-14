@@ -15,51 +15,87 @@ import java.util.HashMap;
 public class VaiDarNamoroTerminal {
     
         
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EntradaInvalida {
         Scanner input = new Scanner(System.in);
+        Menu menu = new Menu();
+        
         ListaPerguntas perguntas = new ListaPerguntas();
         Respostas respostas = new Respostas();
         Pessoa pessoa = new Pessoa();
         Usuario voce = new Usuario();
-       
-        String proximaPergunta = perguntas.getNextQuestion();
-
-        System.out.println("Insira seu nome");
-        String nomeUsuario = input.nextLine();           
-        voce.iniciarUsuario();
-        voce.setNome(nomeUsuario);
         
-        while(proximaPergunta != null){
-            
-            while(voce.getNome() == null){
-                if(voce.getNome() == null){
-                    System.out.println("Insira seu nome por favor");
-                    
+        String proximaPergunta = perguntas.getNextQuestion();
+        String nomeUsuario ;
+                
+        
+        //menu e selecao de "modo" de jogo
+        menu.exibirMenu();
+        int opcaoMenu = input.nextInt();
+        
+        
+
+        //loop pra inserção de nome
+        do{
+            System.out.println("Insira seu nome");
+            nomeUsuario = input.nextLine().toUpperCase();
+
+                if(nomeUsuario == ""){    
+                    throw new EntradaInvalida("Insira seu nome por favor");
                 }
+                voce.iniciarUsuario();
+                voce.setNome(nomeUsuario);
                 System.out.println("Seja bem vindo " + voce.getNome());
-            }
-            
-            
+        }while(nomeUsuario == "");
+        
+        
+        //loop principal do jogo
+        while(true){
             //imprime a pergunta
             System.out.println(proximaPergunta);
             int IndexAtual = perguntas.returnIndex();
             System.out.println("Pergunta  " + IndexAtual + ":");
-            //passa para a proxima pergunta
-            
             
             //pega a resposta com um scanner
             String resposta = input.nextLine();
-            //chama o map pra salvar a resposta da pergunta atual
-            String respostaCorreta = respostas.getResposta(IndexAtual);
+            //capitaliza a entrada 
+            resposta.toUpperCase();
             
-            //confere se a resposta dada é igual a resposta certa
-            if(resposta.equals(respostaCorreta)){
-                System.out.println("Resposta Certa!");
-                //aumenta o alinhamento respectivo
-                voce.increaseAlinhamento(IndexAtual);
+            while(true){    
+                //ve se a resposta eh uma alternativa valida
+                if(resposta != "A"|| resposta != "B"|| resposta != "C"){
+                    System.out.println("Alternativa invalida");
+                } else {break;}
             }
-            System.out.println("Estatisticas atuais : \n" + "A = "+ voce.getAlinhamentoA() + " " + "E = " + voce.getAlinhamentoE()+ " "  + "C = " + voce.getAlinhamentoC() + " " + "N = " + voce.getAlinhamentoN()+ " "  + "O = " + voce.getAlinhamentoO()+ " " );
-            proximaPergunta = perguntas.getNextQuestion();
+            
+            //caso selecione a opcao 1 no menu
+            if(opcaoMenu == 1){
+                //chama o map pra salvar a resposta da pergunta atual
+                String respostaCorreta = respostas.getResposta(IndexAtual);
+
+                //confere se a resposta dada é igual a resposta certa
+                if(resposta.equals(respostaCorreta)){
+                    System.out.println("Resposta Certa!");
+                    //aumenta o alinhamento respectivo
+                    voce.increaseAlinhamento(IndexAtual);
+                }   
+                //condição de parada
+                if(proximaPergunta == null){
+                    break;
+                }
+
+                //debug
+                System.out.println("Estatisticas atuais : \n" + "A = "+ voce.getAlinhamentoA() + " " + "E = " + voce.getAlinhamentoE()+ " "  + "C = " + voce.getAlinhamentoC() + " " + "N = " + voce.getAlinhamentoN()+ " "  + "O = " + voce.getAlinhamentoO()+ " " );
+
+                
+                } else if (opcaoMenu == 2){
+                    respostas.Respostas(resposta);
+                    if(proximaPergunta == null){
+                        perguntas.perguntaAtualIndex = -1;
+                    }
+                }
+                //passa para a proxima pergunta
+                proximaPergunta = perguntas.getNextQuestion();
+            
         }
         
         input.close();  

@@ -11,8 +11,8 @@ import java.util.*;
  */
 public class ListaPerguntas {
    
-    List <String> perguntas;
-    int perguntaAtualIndex;
+    ArrayList <String> perguntas;
+    public int perguntaAtualIndex;
     
     public ListaPerguntas(){
         perguntas = new ArrayList<>();
