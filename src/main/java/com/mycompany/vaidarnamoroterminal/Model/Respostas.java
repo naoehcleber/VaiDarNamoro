@@ -17,14 +17,28 @@ public class Respostas {
     Map<Integer, String> respostasMap = new HashMap<>();
     ArrayList <String> respostas;
     
-    public void Respostas(String respostaMain){
-        respostas = new ArrayList<>();
-        respostas.add(respostaMain);
+    public Respostas(){
+        //to do : passar como parametro as respostas da VITIMA.
+        //inicia o arraylist
+       respostas = new ArrayList<>(5);
+       //inicia todos os valores do arraylist com uma string vazia
+       for(int i =0; i < 5; i++){
+            respostas.add("");
+        }
+       
+        MapRespostas(respostas);
+    }
+    
+    
+    public void salvarRespostas(String respostaMain, int index){
+        
+        respostas.set(index, respostaMain);
     
     }
-
-    public void inicializarRespostas(){
         
+    
+    public void updateResposta(String resposta, int index){
+        respostas.set(index, resposta);
     }
 
     public void MapRespostas(ArrayList<String> respostas){
@@ -40,10 +54,6 @@ public class Respostas {
         
     }
     
-    public Respostas(){
-        //to do : passar como parametro as respostas da VITIMA.
-        MapRespostas(respostas);
-    }
     
     public String getResposta(int IndexAtual){
         return respostasMap.get(IndexAtual);
