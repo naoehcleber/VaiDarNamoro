@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.vaidarnamoroterminal;
+package com.mycompany.vaidarnamoroterminal.Controller;
 
+import com.mycompany.vaidarnamoroterminal.Model.ListaPerguntas;
+import com.mycompany.vaidarnamoroterminal.Model.Pessoa;
+import com.mycompany.vaidarnamoroterminal.Model.Respostas;
+import com.mycompany.vaidarnamoroterminal.View.Menu;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
