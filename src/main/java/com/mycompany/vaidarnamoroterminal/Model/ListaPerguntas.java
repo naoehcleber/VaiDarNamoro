@@ -23,16 +23,18 @@ public class ListaPerguntas {
         perguntas.add("Pergunta  5 \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
         
         
+        
         perguntaAtualIndex = 0;
     }
     
     public String getNextQuestion(){
         if(perguntaAtualIndex >= perguntas.size()){
             return null;
+        } else {
+            String proximaPergunta = perguntas.get(perguntaAtualIndex);
+            perguntaAtualIndex += 1;
+            return proximaPergunta;
         }
-        String proximaPergunta = perguntas.get(perguntaAtualIndex);
-        perguntaAtualIndex += 1;
-        return proximaPergunta;
     }
     public int returnIndex(){
         return perguntaAtualIndex;

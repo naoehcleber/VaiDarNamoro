@@ -46,14 +46,11 @@ public class VaiDarNamoroTerminal {
         //uso de arquivo + error handling
         try {    
             File file = new File("respostas_padrao.txt");
-            
-            //se o arquivo respostas_padrao.txt nao existir ele criar esse arquivo
-            if(!file.exists()){
-                file.createNewFile();
-            } else {
-                //se o arquivo ja existir a gente le ele com um scanner
-                Scanner leitorArquivo = new Scanner(file);
-                currentLineFile = 1;
+            File arquivoUsuario = new File("Perfil_Usuario.txt");
+            //so abre respostas_padrao.txt se o perfil do usuario nao existir
+            if(arquivoUsuario.exists()){
+                Scanner leitorArquivo = new Scanner(arquivoUsuario);
+                currentLineFile = 0;
                 while(leitorArquivo.hasNextLine()){
                     //salva as linhas do arquivo no hashmap de respostas
                     
@@ -64,6 +61,26 @@ public class VaiDarNamoroTerminal {
                     //3)aumenta o contador de linha atual do arquivo
                     currentLineFile++;
                 }
+                leitorArquivo.close();
+            }else if(file.exists()){
+                //se o arquivo ja existir a gente le ele com um scanner
+                Scanner leitorArquivo = new Scanner(file);
+                currentLineFile = 0;
+                while(leitorArquivo.hasNextLine()){
+                    //salva as linhas do arquivo no hashmap de respostas
+                    
+                    //1) salva as linhas do arquivo em uma variavel String
+                    String respostasArquivo = leitorArquivo.nextLine();
+                    //2)chama funcao salvarRespostas do objeto respostas pra salvar as respostas(string) e a linha atual do arquivo(index do hashmap)
+                    respostas.salvarRespostas(respostasArquivo, currentLineFile);
+                    //3)aumenta o contador de linha atual do arquivo
+                    currentLineFile++;
+                }
+                leitorArquivo.close();
+                
+            } else {
+               //se o arquivo respostas_padrao.txt nao existir ele criar esse arquivo
+                file.createNewFile();
             }
         }catch(IOException e){
             e.printStackTrace();
@@ -98,7 +115,6 @@ public class VaiDarNamoroTerminal {
             //menu e selecao de "modo" de jogo
             System.out.println("1 - Comecar Jogo");
             System.out.println("2 - Criar Perfil");
-            
             System.out.println("0 - Sair");
             opcaoMenu = input.nextInt();
            
@@ -121,12 +137,14 @@ public class VaiDarNamoroTerminal {
                 respostaJogo.toUpperCase();
             
                 //ve se a resposta eh uma alternativa valida
-                if(!respostaJogo.equals("A")&& !respostaJogo.equals("C")&& !respostaJogo.equals("C")){
+                if(!respostaJogo.equals("A")&& !respostaJogo.equals("B")&& !respostaJogo.equals("C")){
                         throw new EntradaInvalida("Alternativa invalida !");
                     }
                 //chama o map pra salvar a resposta da pergunta atual
                 respostaCorreta = respostas.getResposta(IndexAtual);
-
+                //debug
+                System.out.println(respostaCorreta);
+                // 
                 //confere se a resposta dada é igual a resposta certa
                 if(respostaJogo.equals(respostaCorreta)){
                     System.out.println("Resposta Certa!");
@@ -134,15 +152,17 @@ public class VaiDarNamoroTerminal {
                     voce.increaseAlinhamento(IndexAtual);
                 }   
                 //condição de parada
-                if(proximaPergunta == null){
+                if(perguntas.getNextQuestion() == null){
                     break;
+                }else {
+                    //passa para a proxima pergunta
+                    proximaPergunta = perguntas.getNextQuestion();
                 }
 
                 //debug
                 //System.out.println("Estatisticas atuais : \n" + "A = "+ voce.getAlinhamentoA() + " " + "E = " + voce.getAlinhamentoE()+ " "  + "C = " + voce.getAlinhamentoC() + " " + "N = " + voce.getAlinhamentoN()+ " "  + "O = " + voce.getAlinhamentoO()+ " " );
                 
-                //passa para a proxima pergunta
-                proximaPergunta = perguntas.getNextQuestion();
+                
                 }
             } else if (opcaoMenu == 2){
                 while(true){
@@ -166,6 +186,7 @@ public class VaiDarNamoroTerminal {
 
                     respostas.salvarRespostas(respostaJogo, IndexAtual);
                     if(proximaPergunta == null){
+                        respostas.arquivarRespostas(respostas.respostas, "respotas_usuario.txt");
                         break;
                     }
                     //passa para a proxima pergunta

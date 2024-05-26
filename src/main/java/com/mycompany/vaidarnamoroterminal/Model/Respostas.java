@@ -7,6 +7,7 @@ package com.mycompany.vaidarnamoroterminal.Model;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.io.*;
 
 
 /**
@@ -14,15 +15,15 @@ import java.util.ArrayList;
  * @author João Victor
  */
 public class Respostas {
-    Map<Integer, String> respostasMap = new HashMap<>();
-    ArrayList <String> respostas = new ArrayList<>();
+    public Map<Integer, String> respostasMap = new HashMap<>();
+    public ArrayList <String> respostas = new ArrayList<>();
     
     public Respostas(){
         //to do : passar como parametro as respostas da VITIMA.
         //inicia o arraylist
        
        //inicia todos os valores do arraylist com uma string vazia
-       for(int i =0; i < 5; i++){
+       for(int i =0; i < 6; i++){
             respostas.add("");
         }
        
@@ -33,12 +34,22 @@ public class Respostas {
     public void salvarRespostas(String respostaMain, int index){
         
         respostas.set(index, respostaMain);
-    
+        MapRespostas(respostas);
     }
-        
     
-    public void updateResposta(String resposta, int index){
-        respostas.set(index, resposta);
+    public void arquivarRespostas(ArrayList<String> lista, String nomeArquivo){
+        //função que passa o ArrayList de respostas para um arquivo de texto
+        // Cria o FileWriter e BufferedWriter para escrever no arquivo
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+            for (String item : lista) {
+                writer.write(item);
+                writer.newLine(); // Escreve uma nova linha no arquivo
+            }
+            System.out.println("Arquivo salvo com sucesso!");
+        } catch (IOException e) {
+            System.err.println("Erro ao escrever no arquivo: " + e.getMessage());
+        }
+    
     }
 
     public void MapRespostas(ArrayList<String> respostas){
