@@ -14,7 +14,7 @@ import java.io.*;
  *
  * @author João Victor
  */
-public class Respostas {
+public class Respostas extends ListaPerguntas{
     public Map<Integer, String> respostasMap = new HashMap<>();
     public ArrayList <String> respostas = new ArrayList<>();
     
@@ -51,6 +51,8 @@ public class Respostas {
         }
     
     }
+    
+    
 
     public void MapRespostas(ArrayList<String> respostas){
         //mapa vai receber como key o index do arrayList Perguntas
@@ -71,6 +73,20 @@ public class Respostas {
     }
     
     //ler as respostas a partir de um arquivo
+    public void lerRespostasArquivo(String nomeArquivo){
+        try (BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo))) {
+            String linha;
+            int index = 1; // Começando do índice 1, conforme a lógica da sua classe
+            while ((linha = reader.readLine()) != null && index <= 5) {
+                respostas.set(index - 1, linha); // Atualiza a resposta no ArrayList
+                respostasMap.put(index, linha); // Atualiza o mapeamento no HashMap
+                index++;
+            }
+            System.out.println("Respostas carregadas com sucesso!");
+        } catch (IOException e) {
+            System.err.println("Erro ao ler o arquivo de respostas: " + e.getMessage());
+        }
+    }
     
     
 }

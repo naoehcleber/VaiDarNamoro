@@ -37,6 +37,7 @@ public class VaiDarNamoroTerminal {
         int opcaoMenu;
         int currentLineFile;
         int IndexAtual;
+        int opcaoPerfil;
         String nomeUsuario ;
         String respostaJogo;
         String respostaCorreta;
@@ -121,9 +122,21 @@ public class VaiDarNamoroTerminal {
             if(opcaoMenu != 1 && opcaoMenu != 2 && opcaoMenu != 0){
                 throw new EntradaInvalida("Insira uma opcao valida por favor");
             }
+            perguntas.restartCounter();
             
             //caso selecione a opcao 1 no menu
             if(opcaoMenu == 1){
+                //seleção de qual perfil vai jogar
+                System.out.println("Escolha qual perfil para ver a compatibilidade :");
+                System.out.println("1 - Padrão");
+                System.out.println("2 - Perfil do Usuario");
+                opcaoPerfil = input.nextInt();
+                if(opcaoPerfil == 1){
+                    respostas.lerRespostasArquivo("respostas_padrao.txt");
+                }else if(opcaoPerfil == 2){
+                    respostas.lerRespostasArquivo("Perfil_usuario.txt");
+                }
+                
                 while(true){
                 //imprime a pergunta
                 IndexAtual = perguntas.returnIndex();
@@ -140,7 +153,7 @@ public class VaiDarNamoroTerminal {
                 if(!respostaJogo.equals("A")&& !respostaJogo.equals("B")&& !respostaJogo.equals("C")){
                         throw new EntradaInvalida("Alternativa invalida !");
                     }
-                //chama o map pra salvar a resposta da pergunta atual
+                //chama o map pra comparar a resposta da pergunta atual
                 respostaCorreta = respostas.getResposta(IndexAtual);
                 //debug
                 System.out.println(respostaCorreta);
@@ -165,7 +178,7 @@ public class VaiDarNamoroTerminal {
                     } 
                 }
                 //passa para a proxima pergunta
-                proximaPergunta = perguntas.getNextQuestion();
+                
                 
 
                 //debug
@@ -197,11 +210,9 @@ public class VaiDarNamoroTerminal {
                     
                     //condição de parada
                     if(perguntas.getNextQuestion() == null){
+                        //passa pra proxima pergunta e verifica se ela é null
                         respostas.arquivarRespostas(respostas.respostas, "Perfil_usuario.txt");
                         break;
-                    }else {
-                        //passa para a proxima pergunta
-                        proximaPergunta = perguntas.getNextQuestion();
                     }
                 }
             }else if(opcaoMenu == 0){

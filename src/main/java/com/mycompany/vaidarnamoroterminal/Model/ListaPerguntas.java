@@ -12,7 +12,7 @@ import java.util.*;
 public class ListaPerguntas {
    
     ArrayList <String> perguntas;
-    public int perguntaAtualIndex;
+    public int perguntaAtualIndex = 0;
     
     public ListaPerguntas(){
         perguntas = new ArrayList<>();
@@ -24,17 +24,21 @@ public class ListaPerguntas {
         
         
         
-        perguntaAtualIndex = 0;
+        
     }
     
     public String getNextQuestion(){
         if(perguntaAtualIndex >= perguntas.size()){
             return null;
-        } else {
-            String proximaPergunta = perguntas.get(perguntaAtualIndex);
-            perguntaAtualIndex += 1;
-            return proximaPergunta;
         }
+        String proximaPergunta = perguntas.get(perguntaAtualIndex);
+        this.perguntaAtualIndex += 1;
+        return proximaPergunta;
+        
+    }
+    
+    public void restartCounter(){
+        this.perguntaAtualIndex = 0;
     }
     public int returnIndex(){
         return perguntaAtualIndex;
