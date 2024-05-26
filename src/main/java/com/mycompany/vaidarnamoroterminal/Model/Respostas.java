@@ -15,12 +15,12 @@ import java.util.ArrayList;
  */
 public class Respostas {
     Map<Integer, String> respostasMap = new HashMap<>();
-    ArrayList <String> respostas;
+    ArrayList <String> respostas = new ArrayList<>();
     
     public Respostas(){
         //to do : passar como parametro as respostas da VITIMA.
         //inicia o arraylist
-       respostas = new ArrayList<>(5);
+       
        //inicia todos os valores do arraylist com uma string vazia
        for(int i =0; i < 5; i++){
             respostas.add("");
@@ -58,5 +58,8 @@ public class Respostas {
     public String getResposta(int IndexAtual){
         return respostasMap.get(IndexAtual);
     }
+    
+    //ler as respostas a partir de um arquivo
+    
     
 }

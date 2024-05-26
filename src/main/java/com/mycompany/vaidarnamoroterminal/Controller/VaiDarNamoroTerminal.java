@@ -13,6 +13,10 @@ import com.mycompany.vaidarnamoroterminal.Model.Respostas;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
+import java.io.File;
+
+import java.io.IOException;
+
 
 /**
  *
@@ -30,9 +34,47 @@ public class VaiDarNamoroTerminal {
         Pessoa pessoa = new Pessoa();
         Usuario voce = new Usuario();
         
-        String proximaPergunta = perguntas.getNextQuestion();
-        String nomeUsuario ;
         int opcaoMenu;
+        int currentLineFile;
+        int IndexAtual;
+        String nomeUsuario ;
+        String respostaJogo;
+        String respostaCorreta;
+        String proximaPergunta;
+        
+        
+        //uso de arquivo + error handling
+        try {    
+            File file = new File("respostas_padrao.txt");
+            
+            //se o arquivo respostas_padrao.txt nao existir ele criar esse arquivo
+            if(!file.exists()){
+                file.createNewFile();
+            } else {
+                //se o arquivo ja existir a gente le ele com um scanner
+                Scanner leitorArquivo = new Scanner(file);
+                currentLineFile = 1;
+                while(leitorArquivo.hasNextLine()){
+                    //salva as linhas do arquivo no hashmap de respostas
+                    
+                    //1) salva as linhas do arquivo em uma variavel String
+                    String respostasArquivo = leitorArquivo.nextLine();
+                    //2)chama funcao salvarRespostas do objeto respostas pra salvar as respostas(string) e a linha atual do arquivo(index do hashmap)
+                    respostas.salvarRespostas(respostasArquivo, currentLineFile);
+                    //3)aumenta o contador de linha atual do arquivo
+                    currentLineFile++;
+                }
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        
+        
+        
+        proximaPergunta = perguntas.getNextQuestion();
+        
+        
         
         
         
@@ -50,23 +92,17 @@ public class VaiDarNamoroTerminal {
         }while(nomeUsuario == "");
         
         
-        
-       
-        
-        
-        
-
- 
         //loop principal do jogo
         while(true){
             //to do: trocar para interface de usuario Swing/JFrame
             //menu e selecao de "modo" de jogo
             System.out.println("1 - Comecar Jogo");
             System.out.println("2 - Criar Perfil");
+            
             System.out.println("0 - Sair");
             opcaoMenu = input.nextInt();
            
-            if(opcaoMenu != 1 && opcaoMenu != 2 && opcaoMenu != 3){
+            if(opcaoMenu != 1 && opcaoMenu != 2 && opcaoMenu != 0){
                 throw new EntradaInvalida("Insira uma opcao valida por favor");
             }
             
@@ -74,25 +110,25 @@ public class VaiDarNamoroTerminal {
             if(opcaoMenu == 1){
                 while(true){
                 //imprime a pergunta
-                int IndexAtual = perguntas.returnIndex();
+                IndexAtual = perguntas.returnIndex();
                 System.out.println("Pergunta  " + IndexAtual + ":");
                 System.out.println(proximaPergunta);
 
-
+                input.nextLine();
                 //pega a resposta com um scanner
-                String resposta = input.nextLine();
+                respostaJogo = input.nextLine();
                 //capitaliza a entrada 
-                resposta.toUpperCase();
+                respostaJogo.toUpperCase();
             
                 //ve se a resposta eh uma alternativa valida
-                if(!resposta.equals("A")&& !resposta.equals("C")&& !resposta.equals("C")){
+                if(!respostaJogo.equals("A")&& !respostaJogo.equals("C")&& !respostaJogo.equals("C")){
                         throw new EntradaInvalida("Alternativa invalida !");
                     }
                 //chama o map pra salvar a resposta da pergunta atual
-                String respostaCorreta = respostas.getResposta(IndexAtual);
+                respostaCorreta = respostas.getResposta(IndexAtual);
 
                 //confere se a resposta dada é igual a resposta certa
-                if(resposta.equals(respostaCorreta)){
+                if(respostaJogo.equals(respostaCorreta)){
                     System.out.println("Resposta Certa!");
                     //aumenta o alinhamento respectivo
                     voce.increaseAlinhamento(IndexAtual);
@@ -103,7 +139,7 @@ public class VaiDarNamoroTerminal {
                 }
 
                 //debug
-                System.out.println("Estatisticas atuais : \n" + "A = "+ voce.getAlinhamentoA() + " " + "E = " + voce.getAlinhamentoE()+ " "  + "C = " + voce.getAlinhamentoC() + " " + "N = " + voce.getAlinhamentoN()+ " "  + "O = " + voce.getAlinhamentoO()+ " " );
+                //System.out.println("Estatisticas atuais : \n" + "A = "+ voce.getAlinhamentoA() + " " + "E = " + voce.getAlinhamentoE()+ " "  + "C = " + voce.getAlinhamentoC() + " " + "N = " + voce.getAlinhamentoN()+ " "  + "O = " + voce.getAlinhamentoO()+ " " );
                 
                 //passa para a proxima pergunta
                 proximaPergunta = perguntas.getNextQuestion();
@@ -111,24 +147,24 @@ public class VaiDarNamoroTerminal {
             } else if (opcaoMenu == 2){
                 while(true){
                     //imprime a pergunta
-                    int IndexAtual = perguntas.returnIndex();
+                    IndexAtual = perguntas.returnIndex();
                     System.out.println("Pergunta  " + IndexAtual + ":");
                     System.out.println(proximaPergunta);
                     //limpa o buffer
                     //to do : corrijir limpeza de buffer pra nao ficar tendo que inserir linha vazia
                     input.nextLine();
                     //pega a resposta com um scanner
-                    String resposta = input.nextLine();
+                    respostaJogo = input.nextLine();
                     //capitaliza a entrada 
-                    resposta.toUpperCase();
+                    respostaJogo.toUpperCase();
 
                     //ve se a resposta eh uma alternativa valida
-                    if(!resposta.equals("A")&& !resposta.equals("B")&& !resposta.equals("C")){
+                    if(!respostaJogo.equals("A")&& !respostaJogo.equals("B")&& !respostaJogo.equals("C")){
                         throw new EntradaInvalida("Alternativa invalida !");
                     }
 
 
-                    respostas.salvarRespostas(resposta, IndexAtual);
+                    respostas.salvarRespostas(respostaJogo, IndexAtual);
                     if(proximaPergunta == null){
                         break;
                     }
