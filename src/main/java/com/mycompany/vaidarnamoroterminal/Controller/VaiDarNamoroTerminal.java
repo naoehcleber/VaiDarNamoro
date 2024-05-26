@@ -103,7 +103,7 @@ public class VaiDarNamoroTerminal {
                 if(nomeUsuario == ""){    
                     throw new EntradaInvalida("Insira seu nome por favor");
                 }
-                voce.iniciarUsuario();
+                
                 voce.setNome(nomeUsuario);
                 System.out.println("Seja bem vindo " + voce.getNome());
         }while(nomeUsuario == "");
@@ -148,16 +148,25 @@ public class VaiDarNamoroTerminal {
                 //confere se a resposta dada é igual a resposta certa
                 if(respostaJogo.equals(respostaCorreta)){
                     System.out.println("Resposta Certa!");
-                    //aumenta o alinhamento respectivo
-                    voce.increaseAlinhamento(IndexAtual);
+                    //aumenta os acertos
+                    voce.increaseAcertos();
+                } else {
+                    System.out.println("Resposta Errada!");
+                    voce.increaseErros();
                 }   
                 //condição de parada
                 if(perguntas.getNextQuestion() == null){
-                    break;
-                }else {
-                    //passa para a proxima pergunta
-                    proximaPergunta = perguntas.getNextQuestion();
+                    if(voce.getAcertos() > voce.getErros()){
+                        System.out.println("MATCH !");
+                        break;
+                    } else {
+                        System.out.println("Hoje não foi seu dia... mais sorte da proxima vez!");
+                        break;
+                    } 
                 }
+                //passa para a proxima pergunta
+                proximaPergunta = perguntas.getNextQuestion();
+                
 
                 //debug
                 //System.out.println("Estatisticas atuais : \n" + "A = "+ voce.getAlinhamentoA() + " " + "E = " + voce.getAlinhamentoE()+ " "  + "C = " + voce.getAlinhamentoC() + " " + "N = " + voce.getAlinhamentoN()+ " "  + "O = " + voce.getAlinhamentoO()+ " " );
@@ -185,12 +194,15 @@ public class VaiDarNamoroTerminal {
 
 
                     respostas.salvarRespostas(respostaJogo, IndexAtual);
-                    if(proximaPergunta == null){
-                        respostas.arquivarRespostas(respostas.respostas, "respotas_usuario.txt");
+                    
+                    //condição de parada
+                    if(perguntas.getNextQuestion() == null){
+                        respostas.arquivarRespostas(respostas.respostas, "Perfil_usuario.txt");
                         break;
+                    }else {
+                        //passa para a proxima pergunta
+                        proximaPergunta = perguntas.getNextQuestion();
                     }
-                    //passa para a proxima pergunta
-                    proximaPergunta = perguntas.getNextQuestion();
                 }
             }else if(opcaoMenu == 0){
                 System.out.println("Saindo do programa");
