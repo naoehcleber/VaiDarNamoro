@@ -4,7 +4,7 @@
  */
 package com.mycompany.vaidarnamoroterminal.Controller;
 
-import com.mycompany.vaidarnamoroterminal.Model.Pessoa;
+import com.mycompany.vaidarnamoroterminal.Entity.Pessoa;
 
 /**
  *

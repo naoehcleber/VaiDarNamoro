@@ -4,7 +4,7 @@
  */
 
 
- package com.mycompany.vaidarnamoroterminal.Model;
+ package com.mycompany.vaidarnamoroterminal.Entity;
  
  
  /**

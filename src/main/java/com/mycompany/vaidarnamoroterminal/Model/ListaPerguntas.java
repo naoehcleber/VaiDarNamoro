@@ -5,33 +5,36 @@
 package com.mycompany.vaidarnamoroterminal.Model;
 import java.util.*;
 
+import com.mycompany.vaidarnamoroterminal.Entity.Perguntas;
+
 /**
  *
  * @author João Victor e Beatriz Romero
  */
 public class ListaPerguntas {
    
-    ArrayList <String> perguntas;
+    ArrayList <Perguntas> perguntas;
     public int perguntaAtualIndex = 0;
     
     public ListaPerguntas(){
-        perguntas = new ArrayList<>();
-        perguntas.add("Pergunta  1 \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
-        perguntas.add("Pergunta  2 \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
-        perguntas.add("Pergunta  3 \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
-        perguntas.add("Pergunta  4 \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
-        perguntas.add("Pergunta  5 \n A ->Tal coisa \n B -> Tal coisa \n C -> Tal coisa");
+        perguntas = new ArrayList<Perguntas>();
         
+        perguntas.add(new Perguntas("Pergunta 1", "A -> Tal coisa", "B -> Tal coisa", "C -> Tal coisa"));
+        perguntas.add(new Perguntas("Pergunta 2", "A -> Tal coisa", "B -> Tal coisa", "C -> Tal coisa"));
+        perguntas.add(new Perguntas("Pergunta 3", "A -> Tal coisa", "B -> Tal coisa", "C -> Tal coisa"));
+        perguntas.add(new Perguntas("Pergunta 4", "A -> Tal coisa", "B -> Tal coisa", "C -> Tal coisa"));
+        perguntas.add(new Perguntas("Pergunta 5", "A -> Tal coisa", "B -> Tal coisa", "C -> Tal coisa"));
         
         
         
     }
     
-    public String getNextQuestion(){
+    public Perguntas getNextQuestion(){
         if(perguntaAtualIndex >= perguntas.size()){
             return null;
         }
-        String proximaPergunta = perguntas.get(perguntaAtualIndex);
+
+        Perguntas proximaPergunta = perguntas.get(perguntaAtualIndex);
         this.perguntaAtualIndex += 1;
         return proximaPergunta;
         

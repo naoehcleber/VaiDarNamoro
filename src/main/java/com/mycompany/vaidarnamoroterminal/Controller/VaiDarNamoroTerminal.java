@@ -6,8 +6,9 @@ package com.mycompany.vaidarnamoroterminal.Controller;
 
 import com.mycompany.vaidarnamoroterminal.Controller.EntradaInvalida;
 import com.mycompany.vaidarnamoroterminal.Controller.Usuario;
+import com.mycompany.vaidarnamoroterminal.Entity.Perguntas;
+import com.mycompany.vaidarnamoroterminal.Entity.Pessoa;
 import com.mycompany.vaidarnamoroterminal.Model.ListaPerguntas;
-import com.mycompany.vaidarnamoroterminal.Model.Pessoa;
 import com.mycompany.vaidarnamoroterminal.Model.Respostas;
 
 import java.util.Scanner;
@@ -41,7 +42,7 @@ public class VaiDarNamoroTerminal {
         String nomeUsuario ;
         String respostaJogo;
         String respostaCorreta;
-        String proximaPergunta;
+        Perguntas proximaPergunta;
         
         
         //uso de arquivo + error handling
