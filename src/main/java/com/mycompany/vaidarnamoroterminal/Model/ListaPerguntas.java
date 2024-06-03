@@ -14,7 +14,8 @@ import com.mycompany.vaidarnamoroterminal.Entity.Perguntas;
 public class ListaPerguntas {
    
     ArrayList <Perguntas> perguntas;
-    public int perguntaAtualIndex = 0;
+    
+    public int perguntaAtualIndex = 1;
     
     public ListaPerguntas(){
         perguntas = new ArrayList<Perguntas>();

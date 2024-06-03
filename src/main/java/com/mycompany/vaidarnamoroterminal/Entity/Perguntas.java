@@ -6,16 +6,17 @@ public class Perguntas {
     private String B;
     private String C;
 
-    public Perguntas() {
-       
+    
+    public Perguntas(){
+        
     }
 
 
     public Perguntas(String fraseP, String respostaA, String respostaB, String respostaC) {
-        FraseP = fraseP;
-        A = respostaA;
-        B = respostaB;
-        C = respostaC;
+        this.FraseP = fraseP;
+        this.A = respostaA;
+        this.B = respostaB;
+        this.C = respostaC;
     }
     public String getFraseP() {
         return FraseP;
@@ -42,6 +43,12 @@ public class Perguntas {
         C = respostaC;
     }
 
-
+    @Override
+    public String toString() {
+        return "Pergunta: " + FraseP + "\n" +
+               "A: " + A + "\n" +
+               "B: " + B + "\n" +
+               "C: " + C + "\n";
+    }
     
 }
