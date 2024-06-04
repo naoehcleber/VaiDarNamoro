@@ -91,7 +91,7 @@ public class VaiDarNamoroTerminal {
         
         
         
-        proximaPergunta = perguntas.getNextQuestion();
+        
         
         
         
@@ -124,6 +124,7 @@ public class VaiDarNamoroTerminal {
                 throw new EntradaInvalida("Insira uma opcao valida por favor");
             }
             perguntas.restartCounter();
+            //proximaPergunta = perguntas.getNextQuestion();
             
             //caso selecione a opcao 1 no menu
             if(opcaoMenu == 1){
@@ -141,6 +142,7 @@ public class VaiDarNamoroTerminal {
                 while(true){
                 //imprime a pergunta
                 IndexAtual = perguntas.returnIndex();
+                proximaPergunta = perguntas.getNextQuestion();
                 System.out.println("Pergunta  " + IndexAtual + ":");
                 System.out.println(proximaPergunta);
 
@@ -148,12 +150,12 @@ public class VaiDarNamoroTerminal {
                 //pega a resposta com um scanner
                 respostaJogo = input.nextLine();
                 //capitaliza a entrada 
-                respostaJogo.toUpperCase();
+                respostaJogo = respostaJogo.toUpperCase();
             
                 //ve se a resposta eh uma alternativa valida
                 if(!respostaJogo.equals("A")&& !respostaJogo.equals("B")&& !respostaJogo.equals("C")){
                         throw new EntradaInvalida("Alternativa invalida !");
-                    }
+                    } 
                 //chama o map pra comparar a resposta da pergunta atual
                 respostaCorreta = respostas.getResposta(IndexAtual);
                 //debug
@@ -168,8 +170,9 @@ public class VaiDarNamoroTerminal {
                     System.out.println("Resposta Errada!");
                     voce.increaseErros();
                 }   
+                
                 //condição de parada
-                if(perguntas.getNextQuestion() == null){
+                if(IndexAtual == perguntas.getTamanhoPerguntas()){
                     if(voce.getAcertos() > voce.getErros()){
                         System.out.println("MATCH !");
                         break;
@@ -191,6 +194,7 @@ public class VaiDarNamoroTerminal {
                 while(true){
                     //imprime a pergunta
                     IndexAtual = perguntas.returnIndex();
+                    proximaPergunta = perguntas.getNextQuestion();
                     System.out.println("Pergunta  " + IndexAtual + ":");
                     System.out.println(proximaPergunta);
                     //limpa o buffer
@@ -210,7 +214,7 @@ public class VaiDarNamoroTerminal {
                     respostas.salvarRespostas(respostaJogo, IndexAtual);
                     
                     //condição de parada
-                    if(perguntas.getNextQuestion() == null){
+                    if(IndexAtual == perguntas.getTamanhoPerguntas()){
                         //passa pra proxima pergunta e verifica se ela é null
                         respostas.arquivarRespostas(respostas.respostas, "Perfil_usuario.txt");
                         break;

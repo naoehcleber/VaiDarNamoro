@@ -11,11 +11,11 @@ import com.mycompany.vaidarnamoroterminal.Entity.Perguntas;
  *
  * @author João Victor e Beatriz Romero
  */
-public class ListaPerguntas {
+public class ListaPerguntas extends Perguntas{
    
     ArrayList <Perguntas> perguntas;
     
-    public int perguntaAtualIndex = 1;
+    private int perguntaAtualIndex;
     
     public ListaPerguntas(){
         perguntas = new ArrayList<Perguntas>();
@@ -46,6 +46,9 @@ public class ListaPerguntas {
     }
     public int returnIndex(){
         return perguntaAtualIndex;
+    }
+    public int getTamanhoPerguntas() {
+        return perguntas.size();
     }
     
     
