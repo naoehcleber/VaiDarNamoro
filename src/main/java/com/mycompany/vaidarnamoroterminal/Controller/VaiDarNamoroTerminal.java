@@ -15,6 +15,8 @@ import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 
 import java.io.IOException;
 
@@ -69,7 +71,6 @@ public class VaiDarNamoroTerminal {
                 Scanner leitorArquivo = new Scanner(file);
                 currentLineFile = 0;
                 while(leitorArquivo.hasNextLine()){
-                    //salva as linhas do arquivo no hashmap de respostas
                     
                     //1) salva as linhas do arquivo em uma variavel String
                     String respostasArquivo = leitorArquivo.nextLine();
@@ -83,6 +84,15 @@ public class VaiDarNamoroTerminal {
             } else {
                //se o arquivo respostas_padrao.txt nao existir ele criar esse arquivo
                 file.createNewFile();
+                try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))){
+                    for(int i = 0; i < perguntas.getTamanhoPerguntas(); i++){
+                        writer.write("A");
+                        writer.newLine();
+                    }
+                } catch (IOException e){
+                    System.err.println("Erro ao escrever no arquivo: " + e.getMessage());
+                }
+                
             }
         }catch(IOException e){
             e.printStackTrace();
@@ -172,7 +182,7 @@ public class VaiDarNamoroTerminal {
                 }   
                 
                 //condição de parada
-                if(IndexAtual == perguntas.getTamanhoPerguntas()){
+                if(IndexAtual >= perguntas.getTamanhoPerguntas()){
                     if(voce.getAcertos() > voce.getErros()){
                         System.out.println("MATCH !");
                         break;
@@ -202,8 +212,9 @@ public class VaiDarNamoroTerminal {
                     input.nextLine();
                     //pega a resposta com um scanner
                     respostaJogo = input.nextLine();
+                    
                     //capitaliza a entrada 
-                    respostaJogo.toUpperCase();
+                    respostaJogo = respostaJogo.toUpperCase();
 
                     //ve se a resposta eh uma alternativa valida
                     if(!respostaJogo.equals("A")&& !respostaJogo.equals("B")&& !respostaJogo.equals("C")){
@@ -214,7 +225,7 @@ public class VaiDarNamoroTerminal {
                     respostas.salvarRespostas(respostaJogo, IndexAtual);
                     
                     //condição de parada
-                    if(IndexAtual == perguntas.getTamanhoPerguntas()){
+                    if(IndexAtual >= perguntas.getTamanhoPerguntas()){
                         //passa pra proxima pergunta e verifica se ela é null
                         respostas.arquivarRespostas(respostas.respostas, "Perfil_usuario.txt");
                         break;
