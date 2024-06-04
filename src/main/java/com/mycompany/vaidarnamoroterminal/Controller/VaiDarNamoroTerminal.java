@@ -142,7 +142,7 @@ public class VaiDarNamoroTerminal {
                 }   
                 
                 //condição de parada
-                if(IndexAtual >= perguntas.getTamanhoPerguntas()){
+                if(IndexAtual == perguntas.getTamanhoPerguntas() - 1){
                     if(voce.getAcertos() > voce.getErros()){
                         System.out.println("MATCH !");
                         break;
@@ -194,10 +194,6 @@ public class VaiDarNamoroTerminal {
                     respostaJogo = respostaJogo.toUpperCase();
 
 
-
-                    input.nextLine();
-                    respostaJogo = input.nextLine().toUpperCase();
-
                     if (!respostaJogo.equals("A") && !respostaJogo.equals("B") && !respostaJogo.equals("C")) {
                         throw new EntradaInvalida("Alternativa invalida !");
                     }
@@ -205,18 +201,13 @@ public class VaiDarNamoroTerminal {
                     respostas.salvarRespostas(respostaJogo, IndexAtual);
 
                     
-                    //condição de parada
-                    if(IndexAtual >= perguntas.getTamanhoPerguntas()){
+                     if(IndexAtual == perguntas.getTamanhoPerguntas() - 1){
                         //passa pra proxima pergunta e verifica se ela é null
-
-
-                    if (IndexAtual == perguntas.getTamanhoPerguntas()) {
-
                         respostas.arquivarRespostas(respostas.respostas, "Perfil_usuario.txt");
                         break;
                     }
                 }
-            }
+            
             } else if (opcaoMenu == 0) {
                 System.out.println("Saindo do programa");
                 break;

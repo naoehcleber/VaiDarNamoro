@@ -58,11 +58,11 @@ public class Respostas extends ListaPerguntas{
         //mapa vai receber como key o index do arrayList Perguntas
         //o value vai ser uma string que seja a resposta
         //to do : mudar o value pra ser um elemento de outro arrayList para poder implementar novos perfis.
-        respostasMap.put(1, respostas.get(0));
-        respostasMap.put(2, respostas.get(1));
-        respostasMap.put(3, respostas.get(2));
-        respostasMap.put(4, respostas.get(3));
-        respostasMap.put(5, respostas.get(4));
+        respostasMap.put(0, respostas.get(0));
+        respostasMap.put(1, respostas.get(1));
+        respostasMap.put(2, respostas.get(2));
+        respostasMap.put(3, respostas.get(3));
+        respostasMap.put(4, respostas.get(4));
         
         
     }
