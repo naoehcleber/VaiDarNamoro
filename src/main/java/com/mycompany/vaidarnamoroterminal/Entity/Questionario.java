@@ -12,9 +12,11 @@ import java.util.*;
 public class Questionario {
    
     ArrayList <Questao> perguntas;
+    
     private int perguntaAtualIndex;
     
     public Questionario(){
+        
         perguntas = new ArrayList<Questao>();
         
         perguntas.add(new Questao("Pergunta 1"));
@@ -25,19 +27,29 @@ public class Questionario {
         
         
         
+        
     }
-    
-    
-    
-    public void restartCounter(){
-        this.perguntaAtualIndex = 0;
+
+    public ArrayList<Questao> getPerguntas() {
+        return perguntas;
     }
-    public int returnIndex(){
+
+    public void setPerguntas(ArrayList<Questao> perguntas) {
+        this.perguntas = perguntas;
+    }
+
+    public int getPerguntaAtualIndex() {
         return perguntaAtualIndex;
     }
-    public int getTamanhoPerguntas() {
-        return perguntas.size();
+
+    public void setPerguntaAtualIndex(int perguntaAtualIndex) {
+        this.perguntaAtualIndex = perguntaAtualIndex;
     }
+     
+    
+    
+    
+    
     
     
    
