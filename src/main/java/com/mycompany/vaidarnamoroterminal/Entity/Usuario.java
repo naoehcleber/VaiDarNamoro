@@ -2,9 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.vaidarnamoroterminal.Controller;
-
-import com.mycompany.vaidarnamoroterminal.Entity.Pessoa;
+package com.mycompany.vaidarnamoroterminal.Entity;
 
 /**
  *
@@ -29,5 +27,6 @@ public class Usuario extends Pessoa{
     public void setErros(int Erros) {
         this.Erros = Erros;
     }
+    
     
 }
