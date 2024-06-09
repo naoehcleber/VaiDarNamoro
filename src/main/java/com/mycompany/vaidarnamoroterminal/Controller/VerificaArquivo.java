@@ -1,3 +1,7 @@
+import java.util.Scanner;
+
+
+
 public class VerificaArquivo{
     try {
         File file = new File("respostas_padrao.txt");
