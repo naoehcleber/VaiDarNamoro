@@ -4,6 +4,7 @@ import com.mycompany.vaidarnamoroterminal.Controller.EntradaInvalida;
 import com.mycompany.vaidarnamoroterminal.Controller.Usuario;
 import com.mycompany.vaidarnamoroterminal.Entity.Perguntas;
 import com.mycompany.vaidarnamoroterminal.Entity.Pessoa;
+import com.mycompany.vaidarnamoroterminal.Entity.Questionario;
 import com.mycompany.vaidarnamoroterminal.Model.ListaPerguntas;
 import com.mycompany.vaidarnamoroterminal.Model.Respostas;
 
@@ -22,10 +23,10 @@ public class VaiDarNamoroTerminal {
     public static void main(String[] args) throws EntradaInvalida {
         Scanner input = new Scanner(System.in);
 
-        ListaPerguntas perguntas = new ListaPerguntas();
-        Respostas respostas = new Respostas();
-        Pessoa pessoa = new Pessoa();
-        Usuario voce = new Usuario();
+        //ListaPerguntas perguntas = new ListaPerguntas();
+        //Respostas respostas = new Respostas();
+        //Pessoa pessoa = new Pessoa();
+        //Usuario voce = new Usuario();
 
         int opcaoMenu;
         int currentLineFile;
@@ -34,7 +35,7 @@ public class VaiDarNamoroTerminal {
         String nomeUsuario;
         String respostaJogo;
         String respostaCorreta;
-        Perguntas proximaPergunta;
+        Questionario proximaPergunta;
 
         
 
@@ -59,81 +60,8 @@ public class VaiDarNamoroTerminal {
             if (opcaoMenu != 1 && opcaoMenu != 2 && opcaoMenu != 0) {
                 throw new EntradaInvalida("Insira uma opcao valida por favor");
             }
-            perguntas.restartCounter();
 
             if (opcaoMenu == 1) {
-                System.out.println("Escolha qual perfil para ver a compatibilidade :");
-                System.out.println("1 - Padrão");
-                System.out.println("2 - Perfil do Usuario");
-                opcaoPerfil = input.nextInt();
-                if (opcaoPerfil == 1) {
-                    respostas.lerRespostasArquivo("respostas_padrao.txt");
-                } else if (opcaoPerfil == 2) {
-                    respostas.lerRespostasArquivo("Perfil_usuario.txt");
-                }
-
-                while (true) {
-                    IndexAtual = perguntas.returnIndex();
-                    proximaPergunta = perguntas.getNextQuestion();
-                    System.out.println(proximaPergunta);
-
-                    input.nextLine();
-                    respostaJogo = input.nextLine().toUpperCase();
-
-                    if (!respostaJogo.equals("A") && !respostaJogo.equals("B") && !respostaJogo.equals("C")) {
-                        throw new EntradaInvalida("Alternativa invalida !");
-
-                    } 
-                //chama o map pra comparar a resposta da pergunta atual
-                respostaCorreta = respostas.getResposta(IndexAtual);
-                //debug
-                System.out.println(respostaCorreta);
-                // 
-                //confere se a resposta dada é igual a resposta certa
-                if(respostaJogo.equals(respostaCorreta)){
-                    System.out.println("Resposta Certa!");
-                    //aumenta os acertos
-                    voce.increaseAcertos();
-                } else {
-                    System.out.println("Resposta Errada!");
-                    voce.increaseErros();
-                }   
-                
-                //condição de parada
-                if(IndexAtual == perguntas.getTamanhoPerguntas() - 1){
-                    if(voce.getAcertos() > voce.getErros()){
-                        System.out.println("MATCH !");
-                        break;
-                    } else {
-                        System.out.println("Hoje não foi seu dia... mais sorte da proxima vez!");
-                        break;
-                    } 
-                }
-                //passa para a proxima pergunta
-                
-                
-
-                    }
-
-                    respostaCorreta = respostas.getResposta(IndexAtual);
-
-                    if (respostaJogo.equals(respostaCorreta)) {
-                        System.out.println("Resposta Certa!");
-                        voce.increaseAcertos();
-                    } else {
-                        System.out.println("Resposta Errada!");
-                        voce.increaseErros();
-                    }
-
-                    if (IndexAtual == perguntas.getTamanhoPerguntas()) {
-                        if (voce.getAcertos() > voce.getErros()) {
-                            System.out.println("MATCH !");
-                            break;
-                        } else {
-                            System.out.println("Hoje não foi seu dia... mais sorte da proxima vez!");
-                            break;
-                        }
-                    }
                 
             } else if (opcaoMenu == 2) {
                 while (true) {

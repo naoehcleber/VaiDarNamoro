@@ -1,3 +1,5 @@
+package com.mycompany.vaidarnamoroterminal.Controller;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -7,7 +9,7 @@ import java.util.Scanner;
 public class VerificaArquivo {
     public static void main(String[] args) {
         try {
-            VerificarResposta respostas = new VerificarResposta(); //   Suponho que exista uma classe Respostas que você esteja usando
+            VerificarResposta respostas = new VerificarResposta(); 
             QuestionarioController perguntas = new QuestionarioController();
             int currentLineFile;
 
