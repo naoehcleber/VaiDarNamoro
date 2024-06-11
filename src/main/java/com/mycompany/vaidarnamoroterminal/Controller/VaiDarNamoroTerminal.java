@@ -26,8 +26,8 @@ public class VaiDarNamoroTerminal {
 
         QuestionarioController perguntas = new QuestionarioController();
         VerificarResposta respostas = new VerificarResposta();
-        UsuarioController voce = new UsuarioController();
         Usuario usuario = new Usuario();
+        UsuarioController voce = new UsuarioController(usuario);
         
         int IndexAtual;
         Questao proximaPergunta;
@@ -40,8 +40,8 @@ public class VaiDarNamoroTerminal {
        
 
         try {
-            File file = new File("respostas_padrao.txt");
-            File arquivoUsuario = new File("Perfil_Usuario.txt");
+            File file = new File("src\\main\\java\\com\\mycompany\\vaidarnamoroterminal\\Model\\respostas_padrao.txt");
+            File arquivoUsuario = new File("src\\main\\java\\com\\mycompany\\vaidarnamoroterminal\\Model\\Perfil_Usuario.txt");
             if (arquivoUsuario.exists()) {
                 Scanner leitorArquivo = new Scanner(arquivoUsuario);
                 currentLineFile = 0;
@@ -112,9 +112,9 @@ public class VaiDarNamoroTerminal {
                 System.out.println("2 - Perfil do Usuario");
                 opcaoPerfil = input.nextInt();
                 if (opcaoPerfil == 1) {
-                    respostas.lerRespostasArquivo("respostas_padrao.txt");
+                    respostas.lerRespostasArquivo("src\\\\main\\\\java\\\\com\\\\mycompany\\\\vaidarnamoroterminal\\\\Model\\\\respostas_padrao.txt");
                 } else if (opcaoPerfil == 2) {
-                    respostas.lerRespostasArquivo("Perfil_usuario.txt");
+                    respostas.lerRespostasArquivo("src\\\\main\\\\java\\\\com\\\\mycompany\\\\vaidarnamoroterminal\\\\Model\\\\Perfil_Usuario.txt");
                 }
 
                 while (true) {
@@ -206,7 +206,7 @@ public class VaiDarNamoroTerminal {
                     
                      if(IndexAtual == perguntas.getTamanhoPerguntas() - 1){
                         //passa pra proxima pergunta e verifica se ela é null
-                        respostas.arquivarRespostas(respostas.respostas, "Perfil_usuario.txt");
+                        respostas.arquivarRespostas(respostas.respostas, "src\\\\main\\\\java\\\\com\\\\mycompany\\\\vaidarnamoroterminal\\\\Model\\\\Perfil_Usuario.txt");
                         break;
                     }
                 }

@@ -12,17 +12,23 @@ public class Usuario extends Pessoa{
     private int Acertos;
     private int Erros;
 
+    public Usuario(){
+        
+    }
+
     public int getAcertos() {
-        return Acertos;
+        return this.Acertos;
     }
 
     public int getErros() {
-        return Erros;
+        return this.Erros;
     }
 
     public void setAcertos(int Acertos) {
         this.Acertos = Acertos;
     }
+
+   
 
     public void setErros(int Erros) {
         this.Erros = Erros;
