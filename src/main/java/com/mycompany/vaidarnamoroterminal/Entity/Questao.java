@@ -1,11 +1,12 @@
 package com.mycompany.vaidarnamoroterminal.Entity;
 
-import java.util.ArrayList;
+
 
 public class Questao {
     private String FraseP;
-    ArrayList <Resposta> respostas;
-
+    private String A;
+    private String B;
+    private String C;
 
     
     public Questao(){
@@ -13,16 +14,11 @@ public class Questao {
     }
 
 
-    public Questao(String fraseP) {
+    public Questao(String fraseP,String respostaA, String respostaB, String respostaC) {
         this.FraseP = fraseP;
-        respostas = new ArrayList<Resposta>();
-        respostas.add(new Resposta( "A -> Praia", "B -> Restaurante 5 estrelas", "C -> Festa clandestina"));
-        respostas.add(new Resposta( "A -> Passear pelo shopping", "B -> Ler e ver filmes", "C -> Dormir"));
-        respostas.add(new Resposta( "A -> Livros e filmes", "B -> Um MP3 Player", "C -> Quatro mil e oitocentas bolas de gude"));
-        respostas.add(new Resposta( "A -> Forte e corajoso", "B -> Inteligente", "C -> Engracado"));
-        respostas.add(new Resposta( "A -> Mantenho minha escolha", "B -> Mudo minha escolha", "C -> Morro"));
-
-        
+        this.A = respostaA;
+        this.B = respostaB;
+        this.C = respostaC;
     }
     public String getFraseP() {
         return FraseP;
@@ -31,7 +27,33 @@ public class Questao {
         FraseP = fraseP;
     }
    
-    //essa parte tem q ta no view
-   
+    public String getRespostaA() {
+        return A;
+    }
+    public void setRespostaA(String respostaA) {
+        A = respostaA;
+    }
+    public String getRespostaB() {
+        return B;
+    }
+    public void setRespostaB(String respostaB) {
+        B = respostaB;
+    }
+    public String getRespostaC() {
+        return C;
+    }
+    public void setRespostaC(String respostaC) {
+        C = respostaC;
+    }
+
+    @Override
+    public String toString() {
+        return "Pergunta: " +  FraseP  + "\n" +
+               "A: " + A + "\n" +
+               "B: " + B + "\n" +
+               "C: " + C + "\n";
+    }
+    
+    
     
 }

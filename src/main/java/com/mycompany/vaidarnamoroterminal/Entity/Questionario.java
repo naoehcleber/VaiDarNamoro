@@ -19,11 +19,11 @@ public class Questionario {
         
         perguntas = new ArrayList<Questao>();
         
-        perguntas.add(new Questao("Aonde voce gostaria que fosse seu date ideal ?"));
-        perguntas.add(new Questao("O que voce gosta de fazer no tempo livre ?"));
-        perguntas.add(new Questao("O que voce levaria para uma ilha deserta ?"));
-        perguntas.add(new Questao("O seu parceiro ideal tem que ser alguem : "));
-        perguntas.add(new Questao("O problema de Monty Hall consiste em um progama de televisao aonde existem 3 portas. Por tras de uma das tres portas existe um carro que sera seu se voce acertar a porta a qual ele esta detras. Voce escolhe uma porta, e o apresentador abre uma das outras duas, sabendo que o carro nao estava detras da porta aberta, o que voce faz ?"));
+        perguntas.add(new Questao("Aonde voce gostaria que fosse seu date ideal ?","A -> Praia", "B -> Restaurante 5 estrelas", "C -> Festa clandestina"));
+        perguntas.add(new Questao("O que voce gosta de fazer no tempo livre ?","A -> Passear pelo shopping", "B -> Ler e ver filmes", "C -> Dormir"));
+        perguntas.add(new Questao("O que voce levaria para uma ilha deserta ?", "A -> Livros e filmes", "B -> Um MP3 Player", "C -> Quatro mil e oitocentas bolas de gude"));
+        perguntas.add(new Questao("O seu parceiro ideal tem que ser alguem : ","A -> Forte e corajoso", "B -> Inteligente", "C -> Engracado"));
+        perguntas.add(new Questao("O problema de Monty Hall consiste em um progama de televisao aonde existem 3 portas. Por tras de uma das tres portas existe um carro que sera seu se voce acertar a porta a qual ele esta detras. Voce escolhe uma porta, e o apresentador abre uma das outras duas, sabendo que o carro nao estava detras da porta aberta, o que voce faz ?", "A -> Mantenho minha escolha", "B -> Mudo minha escolha", "C -> Morro"));
         
         
         
@@ -45,7 +45,6 @@ public class Questionario {
     public void setPerguntaAtualIndex(int perguntaAtualIndex) {
         this.perguntaAtualIndex = perguntaAtualIndex;
     }
-     
     
     
     
