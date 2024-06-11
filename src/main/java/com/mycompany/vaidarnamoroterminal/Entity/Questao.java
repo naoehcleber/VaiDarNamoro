@@ -32,12 +32,6 @@ public class Questao {
     }
    
     //essa parte tem q ta no view
-    /*@Override
-    public String toString() {
-        return "Pergunta: " + FraseP + "\n" +
-               "A: " + A + "\n" +
-               "B: " + B + "\n" +
-               "C: " + C + "\n";
-    }*/
+   
     
 }

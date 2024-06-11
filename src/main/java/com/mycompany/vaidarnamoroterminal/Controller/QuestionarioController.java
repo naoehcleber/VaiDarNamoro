@@ -4,13 +4,16 @@ package com.mycompany.vaidarnamoroterminal.Controller;
 
 import com.mycompany.vaidarnamoroterminal.Entity.Questao;
 import com.mycompany.vaidarnamoroterminal.Entity.Questionario;
+import com.mycompany.vaidarnamoroterminal.Entity.Resposta;
 
 public class QuestionarioController {
 
     private Questionario questionario;
-
+    Questao questao = new Questao();
+    Resposta resposta = new Resposta();
     public QuestionarioController() {
         this.questionario = new Questionario();
+        
     }
 
     public Questao getNextQuestion() {
@@ -33,5 +36,13 @@ public class QuestionarioController {
 
     public int getTamanhoPerguntas() {
         return questionario.getPerguntas().size();
+    }
+
+    @Override
+    public String toString() {
+        return "Pergunta: " +  questao.getFraseP()  + "\n" +
+               "A: " + resposta.getRespostaA()+ "\n" +
+               "B: " + resposta.getRespostaB()+ "\n" +
+               "C: " + resposta.getRespostaC() + "\n";
     }
 }

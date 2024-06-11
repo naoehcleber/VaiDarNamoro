@@ -10,6 +10,9 @@ public class Resposta {
         this.B = respostaB;
         this.C = respostaC;
     }
+    public Resposta() {
+        
+    }
     public String getRespostaA() {
         return A;
     }
